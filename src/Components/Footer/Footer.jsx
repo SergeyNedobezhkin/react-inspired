@@ -5,15 +5,20 @@ import FooterContacts from "./FooterContacts/FooterContacts";
 import FooterCopyright from "./FooterCopyright/FooterCopyright";
 import FooterDevelopment from "./FooterDevelopment/FooterDevelopment";
 import FooterSocial from "./FooterSocial/FooterSocial";
+import Container from "../Layout/Container/Container";
 
-function Footer() {
+function Footer({ list }) {
   return (
-    <footer className={style.container}>
-      <FooterCategory />
-      <FooterContacts />
-      <FooterSocial />
-      <FooterCopyright />
-      <FooterDevelopment />
+    <footer>
+      <Container>
+        <div className={style.container}>
+          <FooterCategory list={list} />
+          <FooterContacts />
+          <FooterSocial />
+          <FooterCopyright />
+          <FooterDevelopment />
+        </div>
+      </Container>
     </footer>
   );
 }

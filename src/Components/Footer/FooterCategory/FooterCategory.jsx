@@ -1,33 +1,35 @@
 import React from "react";
 import style from ".././Footer.module.scss";
 import cn from "classnames";
+import { NavLink } from "react-router-dom";
 
-function FooterCategory() {
+function FooterCategory({ list }) {
   return (
     <div className={style.category}>
       <h3 className={cn(style.categoryTitle, style.title)}>Каталог</h3>
-      <div className={style.categoryList}>
-        <div>
-          <h4 className={style.categorySubtitle}>Женщины</h4>
-          <ul className={style.categorySublist}>
-            <li className={style.link}>Бюстгальтеры</li>
-            <li className={style.link}>Трусы</li>
-            <li className={style.link}>Носки</li>
-            <li className={style.link}>Халаты</li>
-            <li className={style.link}>Термобелье</li>
-            <li className={style.link}>Пижамы</li>
-          </ul>
-        </div>
-        <div>
-          <h4 className={style.categorySubtitle}>Мужчины</h4>
-          <ul className={style.categorySublist}>
-            <li className={style.link}>Трусы</li>
-            <li className={style.link}>Носки</li>
-            <li className={style.link}>Халаты</li>
-            <li className={style.link}>Термобелье</li>
-          </ul>
-        </div>
-      </div>
+      <ul className={style.categoryList}>
+        {list.map((item) => (
+          <li key={item.link} className={style.categoryItem}>
+            <h3 className={style.categorySubtitle}>
+              <NavLink to={item.link} className={style.link}>
+                {item.title}
+              </NavLink>
+            </h3>
+            <ul className={style.categorySublist}>
+              {item.categories.map((category) => (
+                <li key={category.link}>
+                  <NavLink
+                    to={`${item.link}/${category.link}`}
+                    className={style.link}
+                  >
+                    {category.title}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

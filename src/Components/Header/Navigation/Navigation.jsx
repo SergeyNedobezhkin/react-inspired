@@ -1,14 +1,15 @@
 import React from "react";
 import Gender from "./Gender/Gender.jsx";
 import Category from "./Category/Category.jsx";
+import Container from "../../Layout/Container/Container.jsx";
 
-function Navigation() {
+function Navigation({ list }) {
   return (
     <nav>
-      <div className="container">
-        <Gender />
-        <Category />
-      </div>
+      <Container>
+        <Gender list={list} />
+        <Category list={list} />
+      </Container>
     </nav>
   );
 }

@@ -6,7 +6,12 @@ function FooterDevelopment() {
     <div className={style.development}>
       <ul className={style.developmentList}>
         <li>Designer: Anastasia Ilina</li>
-        <li>Developer: Nedobezhkin Sergey</li>
+        <li>
+          Developer:{" "}
+          <a className={style.link} href="https://t.me/Bodrov63">
+            Nedobezhkin Sergey
+          </a>
+        </li>
       </ul>
     </div>
   );
