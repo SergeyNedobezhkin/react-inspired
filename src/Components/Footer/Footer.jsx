@@ -8,13 +8,13 @@ import FooterSocial from "./FooterSocial/FooterSocial";
 
 function Footer() {
   return (
-    <div className={style.container}>
+    <footer className={style.container}>
       <FooterCategory />
       <FooterContacts />
       <FooterSocial />
       <FooterCopyright />
       <FooterDevelopment />
-    </div>
+    </footer>
   );
 }
 
