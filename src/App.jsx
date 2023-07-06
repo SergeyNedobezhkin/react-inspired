@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
 import MainPage from "./Components/MainPage/MainPage";
@@ -10,6 +10,9 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { fetchNavigation } from "./features/navigationSlice";
+import { fetchColor } from "./features/colorSlice";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -17,22 +20,24 @@ const router = createBrowserRouter(
       <Route index element={<MainPage />} />
       <Route path="women" element={<MainPage gender="women" />} />
       <Route path="men" element={<MainPage gender="men" />} />
+      <Route path="kids" element={<MainPage gender="kids" />} />
       <Route path="women/:category" element={<MainPage gender="women" />} />
       <Route path="men/:category" element={<MainPage gender="men" />} />
+      <Route path="kids/:category" element={<MainPage gender="kids" />} />
       <Route path="*" element={<ErrorPage />} />
     </Route>
   )
 );
 
 function App() {
-  return (
-    <>
-      <RouterProvider router={router}>
-        <Header />
-        <Footer />
-      </RouterProvider>
-    </>
-  );
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchNavigation());
+  }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchColor());
+  }, [dispatch]);
+  return <RouterProvider router={router}></RouterProvider>;
 }
 
 export default App;
