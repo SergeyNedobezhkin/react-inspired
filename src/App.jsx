@@ -33,10 +33,9 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchNavigation());
-  }, [dispatch]);
-  useEffect(() => {
     dispatch(fetchColor());
   }, [dispatch]);
+
   return <RouterProvider router={router}></RouterProvider>;
 }
 
