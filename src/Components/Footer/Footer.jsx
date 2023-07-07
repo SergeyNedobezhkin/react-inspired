@@ -7,12 +7,12 @@ import FooterDevelopment from "./FooterDevelopment/FooterDevelopment";
 import FooterSocial from "./FooterSocial/FooterSocial";
 import Container from "../Layout/Container/Container";
 
-function Footer({ list }) {
+function Footer() {
   return (
     <footer>
       <Container>
         <div className={style.container}>
-          <FooterCategory list={list} />
+          <FooterCategory />
           <FooterContacts />
           <FooterSocial />
           <FooterCopyright />

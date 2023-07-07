@@ -4,30 +4,32 @@ import cn from "classnames";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-function FooterCategory({ list }) {
-  const { activeGender, categories } = useSelector((state) => state.navigation);
+function FooterCategory() {
+  const { activeGender, categories, genderList } = useSelector(
+    (state) => state.navigation
+  );
 
   return (
     <div className={style.category}>
       <h3 className={cn(style.categoryTitle, style.title)}>Каталог</h3>
       <ul className={style.categoryList}>
-        {list.map((item) => (
-          <li key={item.link} className={style.categoryItem}>
+        {genderList.map((gender) => (
+          <li key={gender} className={style.categoryItem}>
             <h3 className={style.categorySubtitle}>
               <NavLink
                 className={({ isActive }) =>
                   cn(style.link, isActive && style.linkActive)
                 }
-                to={`${activeGender}/${item.slug}`}
+                to={gender}
               >
-                {item.title}
+                {categories[gender].title}
               </NavLink>
             </h3>
             <ul className={style.categorySublist}>
-              {item.categories.map((category) => (
-                <li key={category.link}>
+              {categories[gender].list.map((category) => (
+                <li key={category.slug}>
                   <NavLink
-                    to={`${activeGender}/${category.link}`}
+                    to={`${gender}/${category.slug}`}
                     className={({ isActive }) =>
                       cn(style.link, isActive && style.linkActive)
                     }
