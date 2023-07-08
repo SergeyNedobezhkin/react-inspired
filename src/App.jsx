@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-import Header from "./Components/Header/Header";
-import Footer from "./Components/Footer/Footer";
 import MainPage from "./Components/MainPage/MainPage";
 import Root from "./routes/Root";
 import ErrorPage from "./Components/ErrorPage/ErrorPage";
