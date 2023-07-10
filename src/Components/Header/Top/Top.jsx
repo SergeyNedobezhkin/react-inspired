@@ -14,7 +14,7 @@ function Top() {
         >
           8 930 490 26 20
         </a>
-        <a className={style.logo} href="/">
+        <a href="/" className={style.topLogo}>
           <img src={logo} alt="Логотип Inspired" />
         </a>
         <div className={style.topNavigation}>

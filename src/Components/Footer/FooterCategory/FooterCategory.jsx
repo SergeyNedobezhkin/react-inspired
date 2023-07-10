@@ -20,7 +20,7 @@ function FooterCategory() {
                 className={({ isActive }) =>
                   cn(style.link, isActive && style.linkActive)
                 }
-                to={gender}
+                to={`/catalog/${gender}`}
               >
                 {categories[gender].title}
               </NavLink>
@@ -29,7 +29,7 @@ function FooterCategory() {
               {categories[gender].list.map((category) => (
                 <li key={category.slug}>
                   <NavLink
-                    to={`${gender}/${category.slug}`}
+                    to={`/catalog/${gender}/${category.slug}`}
                     className={({ isActive }) =>
                       cn(style.link, isActive && style.linkActive)
                     }
