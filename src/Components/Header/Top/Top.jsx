@@ -3,6 +3,7 @@ import cn from "classnames";
 import Container from "../../Layout/Container/Container";
 import style from "./Top.module.scss";
 import logo from "/src/assets/logo.svg";
+import { NavLink } from "react-router-dom";
 
 function Top() {
   return (
@@ -14,9 +15,9 @@ function Top() {
         >
           8 930 490 26 20
         </a>
-        <a href="/" className={style.topLogo}>
+        <NavLink to="/" className={style.topLogo}>
           <img src={logo} alt="Логотип Inspired" />
-        </a>
+        </NavLink>
         <div className={style.topNavigation}>
           <ul className={style.topNavList}>
             <li className={style.topNavItem}>
