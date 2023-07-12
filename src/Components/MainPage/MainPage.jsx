@@ -3,7 +3,7 @@ import { useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGender, fetchCategory } from "../../features/goodsSlice";
 import { setActiveGender } from "../../features/navigationSlice";
-import Goods from "../../Goods/Goods";
+import Goods from "../Goods/Goods";
 import Banner from "../Banner/Banner";
 
 function MainPage() {

@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Goods.module.scss";
-import Container from "../Components/Layout/Container/Container";
-import Product from "../Components/Product/Product";
+import Container from "../Layout/Container/Container";
+import Product from "../Product/Product";
 import { useSelector } from "react-redux";
 
 function Goods({ categoryData }) {

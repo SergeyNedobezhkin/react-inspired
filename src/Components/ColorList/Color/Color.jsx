@@ -12,7 +12,6 @@ function Color({ color, check }) {
     <li
       ref={colorRef}
       className={cn(style.color, check ? style.colorCheck : "")}
-      onClick={() => onChangeColor(color, check)}
     ></li>
   );
 }
