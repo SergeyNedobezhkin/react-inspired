@@ -1,11 +1,10 @@
 import React from "react";
 import style from "./Count.module.scss";
 import cn from "classnames";
-import classNames from "classnames";
 
-function Count({ count, handleIncrement, handleDecrement }) {
+function Count({ count, handleIncrement, handleDecrement, className }) {
   return (
-    <div className={cn(style.count, classNames)}>
+    <div className={cn(style.count, className)}>
       <button className={style.item} type="button" onClick={handleDecrement}>
         -
       </button>
