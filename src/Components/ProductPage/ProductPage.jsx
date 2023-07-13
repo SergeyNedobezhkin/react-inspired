@@ -10,7 +10,7 @@ import ColorList from "../ColorList/ColorList";
 import Count from "../Count/Count";
 import ProductSize from "../ProductSize/ProductSize";
 import Goods from "../Goods/Goods";
-import { fetchCategory } from "../../features/goodsSlice";
+import { fetchGoods } from "../../features/goodsSlice";
 import BtnLike from "../BtnLike/BtnLike";
 
 function ProductPage() {
@@ -45,7 +45,7 @@ function ProductPage() {
 
   useEffect(() => {
     dispatch(
-      fetchCategory({ gender, category, count: 4, top: true, exclude: id })
+      fetchGoods({ gender, category, count: 4, top: true, exclude: id })
     );
   }, [dispatch, gender, category, id]);
 
