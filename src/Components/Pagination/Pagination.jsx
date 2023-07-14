@@ -14,21 +14,25 @@ function Pagination() {
   const handlePageChange = (newPage) => {
     dispatch(setPage(newPage));
   };
-  const handleNextPage = () => {
-    if (page < pages) {
-      handlePageChange(page + 1);
-    }
-  };
+
   const handlePrevPage = () => {
     if (page > 1) {
       handlePageChange(page - 1);
     }
   };
 
+  const handleNextPage = () => {
+    if (page < pages) {
+      handlePageChange(page + 1);
+    }
+  };
+
   const renderPaginationItems = () => {
     const paginationItems = [];
+
     let startPage = Math.max(1, page - 1);
     let endPage = Math.min(startPage + 2, pages);
+
     for (let i = startPage; i <= endPage; i++) {
       paginationItems.push(
         <li className={style.item} key={i}>
@@ -44,6 +48,7 @@ function Pagination() {
     }
     return paginationItems;
   };
+
   return (
     <div className={style.pagination}>
       <button

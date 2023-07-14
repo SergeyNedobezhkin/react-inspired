@@ -14,6 +14,7 @@ export const fetchGender = createAsyncThunk(
 export const fetchGoods = createAsyncThunk(
   "goods/fetchGoods",
   async (param) => {
+    console.log(param);
     const url = new URL(GOODS_URL);
     for (const key in param) {
       url.searchParams.append(key, param[key]);

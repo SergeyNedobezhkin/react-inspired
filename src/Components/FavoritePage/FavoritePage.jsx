@@ -17,6 +17,7 @@ function FavoritePage() {
       }
       dispatch(fetchGoods(param));
     }
+    console.log("favorites", favorites);
   }, [dispatch, page, favorites]);
 
   return <Goods title="Избранные товары" />;
