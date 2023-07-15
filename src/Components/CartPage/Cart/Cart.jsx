@@ -4,11 +4,10 @@ import Container from "../../Layout/Container/Container";
 import CartItem from "../CartItem/CartItem";
 
 function Cart({ cartItems, goodsList }) {
-  let totalPrice = 0;
-  // const itemId = cartItems.map((item) => item.id);
-  // const item = goodsList.find((item) => item.id === itemId);
-
-  // totalPrice = cartItems.reduce((sum, item) => sum + item);
+  const totalPrice = cartItems.reduce((sum, item) => {
+    const itemList = goodsList?.find((cartItem) => cartItem.id === item.id);
+    return itemList?.price * item.count + sum;
+  }, 0);
 
   return (
     <section className={style.cart}>
@@ -26,7 +25,7 @@ function Cart({ cartItems, goodsList }) {
             ))}
           </ul>
         ) : (
-          <h3>В корзине пусто</h3>
+          <h3>Корзина пустая</h3>
         )}
         <div className={style.total}>
           <p>Итого:</p>

@@ -4,7 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { API_URL } from "../../../const";
 import cn from "classnames";
 import Count from "../../Count/Count";
-import { addToCart } from "../../../features/cartSlice";
+import { addToCart, removeFromCart } from "../../../features/cartSlice";
+import { ReactComponent as CloseSVG } from "../../../assets/close.svg";
+
 function CartItem({ id, color, size, count, goodsList }) {
   const { colorList } = useSelector((state) => state.color);
   const item = goodsList.find((item) => item.id === id);
@@ -17,6 +19,10 @@ function CartItem({ id, color, size, count, goodsList }) {
     }
   };
 
+  const onClickRemove = (id, color, size) => {
+    dispatch(removeFromCart({ id: id, color: color, size: size }));
+  };
+
   return (
     <article className={style.item}>
       <img
@@ -26,7 +32,7 @@ function CartItem({ id, color, size, count, goodsList }) {
       />
       <div className={style.contant}>
         <h3 className={style.title}>{item?.title}</h3>
-        <p className={style.price}>руб: {item.price}</p>
+        <p className={style.price}>руб: {item?.price}</p>
         <div className={style.vendorCode}>
           <span className={style.subtitle}>Артикул:</span>
           <span>{id}</span>
@@ -44,14 +50,23 @@ function CartItem({ id, color, size, count, goodsList }) {
           ></div>
         </div>
         <div className={style.size}>
-          <p className={cn(style.subtitle, style.sizeTitle)}>Размер</p>
-          <div className={style.sizeItem}>{size}</div>
+          <p className={cn(style.subtitle, style.sizeTitle)}>Размер</p>{" "}
+          {size ? (
+            <div className={style.sizeItem}>{size} </div>
+          ) : (
+            <p style={{ fontSize: "15px", paddingTop: "3px" }}>
+              Укажите размер
+            </p>
+          )}
         </div>
       </div>
       <button
         className={style.del}
         aria-label="Удалить товар из корзины"
-      ></button>
+        onClick={() => onClickRemove(id, color, size)}
+      >
+        <CloseSVG />
+      </button>
       <Count
         className={style.count}
         count={count}
