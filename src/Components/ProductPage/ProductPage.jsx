@@ -29,6 +29,7 @@ function ProductPage() {
   const handleIncrement = (e) => {
     setCount((prevCount) => prevCount + 1);
   };
+
   const handleDecrement = (e) => {
     if (count > 1) {
       setCount((prevCount) => prevCount - 1);

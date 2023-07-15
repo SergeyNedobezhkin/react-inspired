@@ -16,16 +16,17 @@ const productSlice = createSlice({
     error: null,
     status: "idle",
   },
-
   extraReducers: (builder) => {
     builder
       .addCase(fetchProduct.pending, (state) => {
         state.status = "loading";
       })
+
       .addCase(fetchProduct.fulfilled, (state, action) => {
         state.status = "success";
         state.product = action.payload;
       })
+
       .addCase(fetchProduct.rejected, (state, action) => {
         state.status = "error";
         state.error = action.error.message;

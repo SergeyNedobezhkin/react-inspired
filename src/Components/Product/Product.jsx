@@ -14,7 +14,6 @@ function Product({ id, pic, title, price, colors }) {
       </NavLink>
       <div className={style.row}>
         <p className={style.price}>руб {price}</p>
-
         <BtnLike id={id} />
       </div>
       <ColorList colors={colors} />
