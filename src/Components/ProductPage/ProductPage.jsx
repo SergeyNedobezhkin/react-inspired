@@ -12,6 +12,7 @@ import ProductSize from "../ProductSize/ProductSize";
 import Goods from "../Goods/Goods";
 import { fetchGoods } from "../../features/goodsSlice";
 import BtnLike from "../BtnLike/BtnLike";
+import { addToCart } from "../../features/cartSlice";
 
 function ProductPage() {
   const dispatch = useDispatch();
@@ -20,7 +21,8 @@ function ProductPage() {
   const [selectedColor, setSelectedColor] = useState("");
   const [count, setCount] = useState(1);
   const [selectedSize, setSelectedSize] = useState("");
-  const { gender, category } = product;
+  const { gender, category, colors } = product;
+  const { colorList } = useSelector((state) => state.color);
 
   const handleSizeChange = (e) => {
     setSelectedSize(e.target.value);
@@ -50,6 +52,12 @@ function ProductPage() {
     );
   }, [dispatch, gender, category, id]);
 
+  useEffect(() => {
+    if (colorList?.length && colors?.length) {
+      setSelectedColor(colorList.find((color) => color.id === colors[0]).title);
+    }
+  }, [colorList, colors]);
+
   return (
     <>
       <section className={style.card}>
@@ -59,7 +67,20 @@ function ProductPage() {
             src={`${API_URL}/${product.pic}`}
             alt={`${product.title}`}
           />
-          <form className={style.content}>
+          <form
+            className={style.content}
+            onSubmit={(e) => {
+              e.preventDefault();
+              dispatch(
+                addToCart({
+                  id,
+                  color: selectedColor,
+                  size: selectedSize,
+                  count,
+                })
+              );
+            }}
+          >
             <h2 className={style.title}>{product.title}</h2>
             <p className={style.price}>руб {product.price}</p>
             <div className={style.vendorCode}>
@@ -71,7 +92,7 @@ function ProductPage() {
               <ColorList
                 handleColorChange={handleColorChange}
                 selectedColor={selectedColor}
-                colors={product.colors}
+                colors={colors}
               />
             </div>
             <ProductSize
@@ -95,13 +116,7 @@ function ProductPage() {
               <button className={style.addCart} type="submit">
                 В корзину
               </button>
-              <button
-                className={style.favorite}
-                aria-label="Добавить в избранное"
-                type="button"
-              >
-                <BtnLike id={id} />
-              </button>
+              <BtnLike id={id} />
             </div>
           </form>
         </Container>

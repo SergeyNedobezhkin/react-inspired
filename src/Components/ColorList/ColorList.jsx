@@ -11,6 +11,7 @@ function ColorList({ colors, selectedColor, handleColorChange }) {
     <div className={style.colorList}>
       {colors?.map((id, i) => {
         const color = colorList.find((color) => color.id === id);
+
         return (
           <ColorLabel
             key={id}
