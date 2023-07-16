@@ -17,7 +17,7 @@ function Cart({ cartItems, goodsList }) {
     <section className={style.cart}>
       <Container>
         <h2 className={style.title}>Корзина</h2>
-        {goodsList.length ? (
+        {goodsList.length && totalPrice ? (
           <ul className={style.list}>
             {cartItems.map((item) => (
               <li
@@ -29,7 +29,7 @@ function Cart({ cartItems, goodsList }) {
             ))}
           </ul>
         ) : (
-          <h3>Корзина пустая</h3>
+          <h3 className={style.empty}>Корзина пустая</h3>
         )}
         <div className={style.total}>
           <p>Итого:</p>

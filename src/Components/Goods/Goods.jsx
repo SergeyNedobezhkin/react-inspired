@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import style from "./Goods.module.scss";
 import Container from "../Layout/Container/Container";
 import Product from "../Product/Product";
@@ -13,7 +13,7 @@ function Goods({ title }) {
       <Container>
         <h2 className={style.title}>
           {title ?? "Новинки"}
-          {totalCount && <sup>&nbsp;({totalCount})</sup>}
+          {totalCount && totalCount > 0 ? <sup>&nbsp;({totalCount})</sup> : ""}
         </h2>
         <ul className={style.list}>
           {goodsList.map((item) => (
