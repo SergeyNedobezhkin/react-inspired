@@ -6,12 +6,15 @@ import { useSelector } from "react-redux";
 import Pagination from "../Pagination/Pagination";
 
 function Goods({ title }) {
-  const { goodsList, pages } = useSelector((state) => state.goods);
+  const { goodsList, pages, totalCount } = useSelector((state) => state.goods);
 
   return (
     <section className={style.goods}>
       <Container>
-        <h2 className={style.title}>{title ?? "Новинки"}</h2>
+        <h2 className={style.title}>
+          {title ?? "Новинки"}
+          {totalCount && <sup>&nbsp;({totalCount})</sup>}
+        </h2>
         <ul className={style.list}>
           {goodsList.map((item) => (
             <li key={item.id}>

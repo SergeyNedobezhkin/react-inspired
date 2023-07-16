@@ -18,6 +18,7 @@ const cartSlice = createSlice({
       } else {
         state.cartItems.push({ id, color, size, count });
         localStorage.setItem("cart", JSON.stringify(state.cartItems));
+        state.countItems = state.cartItems.length;
       }
     },
 
@@ -31,6 +32,7 @@ const cartSlice = createSlice({
         state.cartItems.splice(itemIndex, 1);
       }
       localStorage.setItem("cart", JSON.stringify(state.cartItems));
+      state.countItems = state.cartItems.length;
     },
   },
 });

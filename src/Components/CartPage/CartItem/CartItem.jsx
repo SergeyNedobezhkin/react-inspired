@@ -19,8 +19,8 @@ function CartItem({ id, color, size, count, goodsList }) {
     }
   };
 
-  const onClickRemove = (id, color, size) => {
-    dispatch(removeFromCart({ id: id, color: color, size: size }));
+  const onClickRemove = () => {
+    dispatch(removeFromCart({ id, color, size }));
   };
 
   return (
@@ -50,7 +50,7 @@ function CartItem({ id, color, size, count, goodsList }) {
           ></div>
         </div>
         <div className={style.size}>
-          <p className={cn(style.subtitle, style.sizeTitle)}>Размер</p>{" "}
+          <p className={cn(style.subtitle, style.sizeTitle)}>Размер</p>
           {size ? (
             <div className={style.sizeItem}>{size} </div>
           ) : (
@@ -63,7 +63,7 @@ function CartItem({ id, color, size, count, goodsList }) {
       <button
         className={style.del}
         aria-label="Удалить товар из корзины"
-        onClick={() => onClickRemove(id, color, size)}
+        onClick={() => onClickRemove()}
       >
         <CloseSVG />
       </button>

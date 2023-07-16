@@ -10,7 +10,7 @@ import { ReactComponent as SearchSVG } from "../../../assets/search.svg";
 import { useSelector } from "react-redux";
 function Top() {
   const { cartItems } = useSelector((state) => state.cart);
-  const cartCount = cartItems.reduce((sum, item) => sum + item.count, 0);
+  const countItems = cartItems.reduce((sum, item) => sum + item.count, 0);
 
   return (
     <div className={style.top}>
@@ -33,8 +33,8 @@ function Top() {
             </li>
             <li className={style.topNavItem}>
               <NavLink to="/cart" className={cn(style.topLink)}>
-                <p className={style.topLinkCount}>{cartCount}</p>
                 <CartSVG />
+                <span className={style.topLinkCount}>{countItems}</span>
               </NavLink>
             </li>
             <li className={style.topNavItem}>

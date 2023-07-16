@@ -5,8 +5,12 @@ import CartItem from "../CartItem/CartItem";
 
 function Cart({ cartItems, goodsList }) {
   const totalPrice = cartItems.reduce((sum, item) => {
-    const itemList = goodsList?.find((cartItem) => cartItem.id === item.id);
-    return itemList?.price * item.count + sum;
+    const product = goodsList?.find((product) => product.id === item.id);
+    if (product) {
+      return sum + product.price * item.count;
+    } else {
+      return sum;
+    }
   }, 0);
 
   return (
