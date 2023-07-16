@@ -12,7 +12,13 @@ function Order({ cartItems }) {
 
   const validationSchema = Yup.object({
     fio: Yup.string().required("Заполните ФИО"),
-    address: Yup.string().required("Введите адрес доставки"),
+    address: Yup.string().test(
+      "deliveryTest",
+      "Введите адрес доставки",
+      function (value) {
+        return this.parent.delivery === "delivery" ? !!value : true;
+      }
+    ),
     phone: Yup.string()
       .required("Введите номер телефона")
       .matches(
@@ -59,7 +65,7 @@ function Order({ cartItems }) {
                 <Field
                   className={style.input}
                   type="text"
-                  placeholder="Адрес доставки*"
+                  placeholder="Адрес доставки"
                   name="address"
                 />
                 <ErrorMessage
@@ -98,7 +104,7 @@ function Order({ cartItems }) {
                 />
               </label>
             </fieldset>
-            <filter className={style.radioList}>
+            <fieldset className={style.radioList}>
               <label className={style.radio}>
                 <Field
                   className={style.radioInput}
@@ -122,7 +128,7 @@ function Order({ cartItems }) {
                 name="delivery"
                 component={"span"}
               />
-            </filter>
+            </fieldset>
             <button className={style.submit} type="submit">
               Оформить
             </button>

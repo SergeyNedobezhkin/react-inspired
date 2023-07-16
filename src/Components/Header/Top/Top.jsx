@@ -8,9 +8,14 @@ import { ReactComponent as LikeSVG } from "../../../assets/heart.svg";
 import { ReactComponent as CartSVG } from "../../../assets/cart.svg";
 import { ReactComponent as SearchSVG } from "../../../assets/search.svg";
 import { useSelector } from "react-redux";
-function Top() {
+
+function Top({ setOpenSearch, openSearch }) {
   const { cartItems } = useSelector((state) => state.cart);
   const countItems = cartItems.reduce((sum, item) => sum + item.count, 0);
+
+  const handleOpenSearch = () => {
+    setOpenSearch(!openSearch);
+  };
 
   return (
     <div className={style.top}>
@@ -27,7 +32,7 @@ function Top() {
         <div className={style.topNavigation}>
           <ul className={style.topNavList}>
             <li className={style.topNavItem}>
-              <button className={style.topLink}>
+              <button className={style.topLink} onClick={handleOpenSearch}>
                 <SearchSVG />
               </button>
             </li>
