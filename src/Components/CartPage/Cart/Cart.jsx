@@ -17,7 +17,7 @@ function Cart({ cartItems, goodsList }) {
     <section className={style.cart}>
       <Container>
         <h2 className={style.title}>Корзина</h2>
-        {goodsList.length && totalPrice ? (
+        {cartItems.length && totalPrice ? (
           <ul className={style.list}>
             {cartItems.map((item) => (
               <li
